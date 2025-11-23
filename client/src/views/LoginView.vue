@@ -3,10 +3,8 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
-import { useAuthStore } from "../stores/authStore.js";
 
 const router = useRouter();
-const authStore = useAuthStore();
 const username = ref("");
 const password = ref("");
 const loading = ref(false);
@@ -36,7 +34,9 @@ const loggin = async () => {
     if(!response.data){
       throw new Error("Invalid response from server");
     }
-authStore.login(response.data);
+        localStorage.setItem("u_id", response.data.u_id);
+    localStorage.setItem("role", response.data.role);
+    localStorage.setItem('isValidator', response.data.role === "validator");
     
     if (response.data.role === "validator") {
       localStorage.setItem("isValidator", true);

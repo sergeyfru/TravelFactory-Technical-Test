@@ -50,7 +50,7 @@ export const getVacationByUserId = async (u_id) => {
         return vacations;
         
     } catch (error) {
-        console.log('Error in Vacation models getVacationByUserId =>', error);
+        console.error('Error in Vacation models getVacationByUserId =>', error);
         throw new Error('Error in Vacation models getVacationByUserId')
     }
 };
@@ -71,7 +71,7 @@ export const addVacationRequest = async (u_id, start_date, end_date, reason) => 
         return newRequest;
     } catch (error) {
         trx.rollback();
-        console.log('Error in Vacation models addVacationRequest =>', error);
+        console.error('Error in Vacation models addVacationRequest =>', error);
         throw new Error('Error in Vacation models addVacationRequest')
     }
 }
@@ -90,7 +90,7 @@ export const updateVacationRequestStatus = async (v_id, status, comments) => {
         return updatedRequest;
     } catch (error) {
         trx.rollback();
-        console.log('Error in Vacation models updateVacationStatus =>', error);
+        console.error('Error in Vacation models updateVacationStatus =>', error);
         throw new Error('Error in Vacation models updateVacationStatus')
     }
 };

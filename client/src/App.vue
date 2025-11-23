@@ -2,12 +2,10 @@
 <script setup>
   import { RouterView, RouterLink, useRouter } from "vue-router";
   const u_id = localStorage.getItem("u_id");
-  import  {useAuthStore} from "./stores/authStore.js";
-  const authStore = useAuthStore();
   const router = useRouter();
  
   const logout = () => {
-    authStore.logout();
+    localStorage.clear();
     router.push("/login");
   };
   </script>

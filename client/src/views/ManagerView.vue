@@ -1,6 +1,8 @@
 <script setup>
 import axios from "axios";
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
 const isValidator = localStorage.getItem('isValidator');
 
 const vacations = ref([]);
@@ -9,8 +11,10 @@ const normalizeDate = (isoString) => {
   return date.toLocaleDateString();
 };
 const getAllVacations = async () => {
-  if (!isValidator) {
+  if (isValidator) {
     alert("Access denied. You do not have permission to view this page.");
+    router.push(`/login`);
+    localStorage.clear();
     return;
   };
   try {
