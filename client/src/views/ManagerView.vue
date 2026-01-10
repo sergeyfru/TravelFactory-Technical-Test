@@ -10,8 +10,8 @@ const normalizeDate = (isoString) => {
   const date = new Date(isoString);
   return date.toLocaleDateString();
 };
-const getAllVacations = async () => {
-  if (isValidator) {
+const getAllVacations = async () => {  
+  if (isValidator === 'false') {
     alert("Access denied. You do not have permission to view this page.");
     router.push(`/login`);
     localStorage.clear();
