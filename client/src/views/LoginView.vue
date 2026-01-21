@@ -30,15 +30,17 @@ const loggin = async () => {
         password: password.value,
       }
     );
+    console.log(response);
+    
     loading.value = false;
     if(!response.data){
       throw new Error("Invalid response from server");
     }
-        localStorage.setItem("u_id", response.data.u_id);
-    localStorage.setItem("role", response.data.role);
-    localStorage.setItem('isValidator', response.data.role === "validator");
-    
-    if (response.data.role === "validator") {
+        localStorage.setItem("u_id", response.data.user.u_id);
+    localStorage.setItem("role", response.data.user.role);
+    localStorage.setItem('isValidator', response.data.user.role === "validator");
+
+    if (response.data.user.role === "validator") {
       localStorage.setItem("isValidator", true);
       router.push("/vacationsrequests");
     } else {

@@ -82,7 +82,7 @@ getAllVacations();
             <td>{{ vacation.reason }}</td>
             <td>{{ vacation.status }}</td>
             <td>
-              <div class="action-buttons">
+              <div v-if="vacation.status === 'PENDING'" class="action-buttons">
                 <button
                   class="btn approve"
                   @click="updateVacationStatus(vacation.v_id, 'approved')"
@@ -97,6 +97,7 @@ getAllVacations();
                   Reject
                 </button>
               </div>
+              <div v-else class="action-buttons"></div>
             </td>
           </tr>
         </tbody>
@@ -179,6 +180,7 @@ getAllVacations();
 }
 
 .action-buttons {
+  width: 147.16px;
   display: flex;
   gap: 0.4rem;
 }

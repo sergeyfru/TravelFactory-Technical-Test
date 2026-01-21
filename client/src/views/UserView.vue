@@ -29,7 +29,7 @@ const normalizeDate = (isoString) => {
       }
     };
 
-    const chackDates = () => {
+    const checkDates = () => {
       if (!start_date.value || !end_date.value) {
         alert("Please select both start and end dates.");
         return 0;
@@ -45,7 +45,7 @@ const normalizeDate = (isoString) => {
     };
 
     const addVacationRequest = async () => {
-      if (!chackDates()) return;
+      if (!checkDates()) return;
 
       const u_id = localStorage.getItem("u_id");
 
@@ -64,6 +64,9 @@ const normalizeDate = (isoString) => {
           }
         );
         getMyVacations(); // Refresh the list after adding
+        start_date.value = "";
+        end_date.value = "";
+        reason.value = "";
       } catch (error) {
         console.error("There was an error adding the vacation request!", error);
       }
